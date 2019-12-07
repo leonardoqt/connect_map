@@ -7,17 +7,20 @@ using namespace std;
 int main()
 {
 	mapper sys1;
-	int dim = 2;
+	int dim = 3;
 	vector<int> ll(dim);
 	int index;
-	ll[0] = 11;
-	ll[1] = 11;
-	vector<int> value(ll[0]*ll[1]);
+	int len = 41;
+	ll[0] = len;
+	ll[1] = len;
+	ll[2] = len;
+	vector<int> value(ll[0]*ll[1]*ll[2]);
 	for(size_t t1=0; t1<ll[0]; t1++)
 	for(size_t t2=0; t2<ll[1]; t2++)
+	for(size_t t3=0; t3<ll[2]; t3++)
 	{
-		index = t1*ll[0]+t2;
-		if( (t1-5)*(t1-5)+(t2-5)*(t2-5) <= 25)
+		index = (t1*ll[0]+t2)*ll[1]+t3;
+		if( (t1-len/2)*(t1-len/2)+(t2-len/2)*(t2-len/2)+(t3-len/2)*(t3-len/2) <= (len/2)*(len/2)*(len/2))
 			value[index] = 1;
 		else
 			value[index] = 0;

@@ -1,10 +1,12 @@
 #include <iostream>
+#include <stdlib.h>
 #include "mapper.h"
 
 using namespace std;
 
 void mapper :: init(int Dim, vector<int> L)
 {
+	system("ulimit -s unlimited");
 	if(Dim !=L.size())
 	{
 		cout<<"Error: the dimension of size parameters is wrong."<<endl;
@@ -86,7 +88,7 @@ void mapper :: connect_region()
 		m1 = 0;
 	for(size_t t1=0; t1<nn; t1++)
 	{
-		if(!if_visit[t1])
+		if(!if_visit[t1] && value[t1]!=0)
 		{
 			regions.push_back(vector<int>());
 			connect_region(t1);
