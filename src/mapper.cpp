@@ -64,7 +64,7 @@ void mapper :: check_chain()
 					chain[i1].index_p[t1] = i3;
 				}
 			}
-			if(chain[i1].pos[t1]>1)
+			if(chain[i1].pos[t1]>0)
 			{
 				i2 = chain[i1].pos; i2[t1]--;
 				i3 = index(i2);
