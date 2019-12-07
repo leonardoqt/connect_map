@@ -92,8 +92,8 @@ void mapper :: connect_region()
 		{
 			regions.push_back(vector<int>());
 			connect_region(t1);
+			regions[regions.size()-1].shrink_to_fit();
 		}
-		regions[regions.size()-1].shrink_to_fit();
 	}
 }
 

@@ -23,4 +23,4 @@ $(ODIR)/%.o : $(SDIR)/%.cpp $(DEPS) | $(ODIR)/.
 clean:
 	rm -rf *.x $(ODIR)
 clean_all:
-	rm -rf *.x $(ODIR)
+	rm -rf *.x $(ODIR) *.*
