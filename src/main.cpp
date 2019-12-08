@@ -10,7 +10,7 @@ int main()
 	int dim = 3;
 	vector<int> ll(dim);
 	int index;
-	int len = 101;
+	int len = 201;
 	ll[0] = len;
 	ll[1] = len;
 	ll[2] = len;
@@ -23,7 +23,7 @@ int main()
 		if( (t1-len/2)*(t1-len/2)+(t2-len/2)*(t2-len/2)+(t3-len/2)*(t3-len/2) <= (len/2)*(len/2))
 			value[index] = 1;
 		else
-			value[index] = 0;
+			value[index] = 2;
 	}
 	sys1.init(dim,ll);
 	sys1.assign(value);

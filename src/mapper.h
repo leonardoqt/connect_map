@@ -25,7 +25,7 @@ private:
 	std::vector<int> if_visit;	// if already visited
 	std::vector<connector> chain;	// if neighbor are connected
 	std::vector<std::vector<int> > regions;	// connected regions
-	void connect_region(int);
+	std::vector<int> region_tmp;
 public:
 	void init(int Dim, std::vector<int> L);
 	void assign(std::vector<int> Value);

@@ -90,23 +90,34 @@ void mapper :: connect_region()
 	{
 		if(!if_visit[t1] && value[t1]!=0)
 		{
+			if_visit[t1] = 1;
+			region_tmp.clear();
+			region_tmp.push_back(t1);
 			regions.push_back(vector<int>());
-			connect_region(t1);
-			regions[regions.size()-1].shrink_to_fit();
+			int regions_last = regions.size()-1;
+			while(region_tmp.size() > 0)
+			{
+				// find connected neighbors
+				for(size_t t2=0; t2<dim; t2++)
+				{
+					if(chain[region_tmp[0]].if_up_p[t2] && !if_visit[chain[region_tmp[0]].index_p[t2]])
+					{
+						if_visit[chain[region_tmp[0]].index_p[t2]] = 1;
+						region_tmp.push_back(chain[region_tmp[0]].index_p[t2]);
+					}
+					if(chain[region_tmp[0]].if_up_n[t2] && !if_visit[chain[region_tmp[0]].index_n[t2]])
+					{
+						if_visit[chain[region_tmp[0]].index_n[t2]] = 1;
+						region_tmp.push_back(chain[region_tmp[0]].index_n[t2]);
+					}
+				}
+				// add itself to the region list
+				regions[regions_last].push_back(region_tmp[0]);
+				// remove it from region_tmp
+				region_tmp[0] = region_tmp[region_tmp.size()-1];
+				region_tmp.pop_back();
+			}
 		}
-	}
-}
-
-void mapper :: connect_region(int i1)
-{
-	if_visit[i1] = 1;
-	regions[regions.size()-1].push_back(i1);
-	for(size_t t1=0; t1<dim; t1++)
-	{
-		if(chain[i1].if_up_p[t1] && !if_visit[chain[i1].index_p[t1]])
-			connect_region(chain[i1].index_p[t1]);
-		if(chain[i1].if_up_n[t1] && !if_visit[chain[i1].index_n[t1]])
-			connect_region(chain[i1].index_n[t1]);
 	}
 }
 
