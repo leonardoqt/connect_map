@@ -1,16 +1,17 @@
 #include <iostream>
 #include <vector>
-#include "mapper.h"
+#include "connector.h"
 
 using namespace std;
 
 int main()
 {
-	mapper sys1;
+	connector sys1;
 	int dim = 3;
 	vector<int> ll(dim);
 	int index;
-	int len = 201;
+	int len = 21;
+	vector<vector<int> > result;
 	ll[0] = len;
 	ll[1] = len;
 	ll[2] = len;
@@ -27,8 +28,7 @@ int main()
 	}
 	sys1.init(dim,ll);
 	sys1.assign(value);
-	sys1.check_chain();
-	sys1.connect_region();
-	sys1.print();
+	result = sys1.run();
+
 	return 0;
 }

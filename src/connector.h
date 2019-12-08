@@ -3,9 +3,9 @@
 #include <vector>
 
 class connector;
-class mapper;
+class connector;
 
-class connector
+class bridge
 {
 public:
 	std::vector<int> pos;
@@ -15,7 +15,7 @@ public:
 	std::vector<int> index_n;
 };
 
-class mapper
+class connector
 {
 private:
 	int dim;	// dimension of the system
@@ -23,7 +23,7 @@ private:
 	std::vector<int> ll;	// size of the system
 	std::vector<int> value;		// value of each site
 	std::vector<int> if_visit;	// if already visited
-	std::vector<connector> chain;	// if neighbor are connected
+	std::vector<bridge> chain;	// if neighbor are connected
 	std::vector<std::vector<int> > regions;	// connected regions
 	std::vector<int> region_tmp;
 public:
@@ -35,6 +35,7 @@ public:
 	int index(std::vector<int>);
 	std::vector<int> index(int);
 
+	std::vector<std::vector<int> >& run();
 	void print();
 };
 #endif

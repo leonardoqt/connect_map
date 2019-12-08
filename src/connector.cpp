@@ -1,10 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
-#include "mapper.h"
+#include "connector.h"
 
 using namespace std;
 
-void mapper :: init(int Dim, vector<int> L)
+void connector :: init(int Dim, vector<int> L)
 {
 	system("ulimit -s unlimited");
 	if(Dim !=L.size())
@@ -32,7 +32,7 @@ void mapper :: init(int Dim, vector<int> L)
 	}
 }
 
-void mapper :: assign(vector<int> Value)
+void connector :: assign(vector<int> Value)
 {
 	if(nn != Value.size())
 	{
@@ -42,7 +42,7 @@ void mapper :: assign(vector<int> Value)
 	value = Value;
 }
 
-void mapper :: check_chain()
+void connector :: check_chain()
 {
 	vector<int> i2;
 	int i3;
@@ -79,7 +79,7 @@ void mapper :: check_chain()
 		}
 }
 
-void mapper :: connect_region()
+void connector :: connect_region()
 {
 	// clean up region
 	regions.clear();
@@ -121,7 +121,7 @@ void mapper :: connect_region()
 	}
 }
 
-int mapper :: index(vector<int> i1)
+int connector :: index(vector<int> i1)
 {
 	int i2=i1[0];
 	for(size_t t1=1; t1<dim; t1++)
@@ -129,7 +129,7 @@ int mapper :: index(vector<int> i1)
 	return i2;
 }
 
-vector<int> mapper :: index(int i1)
+vector<int> connector :: index(int i1)
 {
 	vector<int> i2(dim);
 	for(int t1=dim-1; t1>=0; t1--)
@@ -140,7 +140,14 @@ vector<int> mapper :: index(int i1)
 	return i2;
 }
 
-void mapper :: print()
+vector<vector<int> >& connector :: run()
+{
+	check_chain();
+	connect_region();
+	return regions;
+}
+
+void connector :: print()
 {
 	vector<int> tmp;
 	for(auto& m1:regions)
