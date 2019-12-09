@@ -6,7 +6,6 @@ using namespace std;
 
 void connector :: init(int Dim, vector<int> L)
 {
-	system("ulimit -s unlimited");
 	if(Dim !=L.size())
 	{
 		cout<<"Error: the dimension of size parameters is wrong."<<endl;
